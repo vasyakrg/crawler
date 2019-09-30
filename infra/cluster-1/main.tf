@@ -26,6 +26,8 @@ resource "google_container_cluster" "k8s" {
 
   initial_node_count = "${var.num_nodes}"
 
+  enable_legacy_abac = "true"
+
   master_auth {
     username = "${var.master_auth_username}"
     password = "${var.master_auth_password}"
