@@ -28,19 +28,19 @@ mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
 mattermostAppUID: aadas
 redisImage: redis:3.2.10
 redisDedicatedStorage: true
-redisStorageSize: 5Gi
+redisStorageSize: 3Gi
 redisAccessMode: ReadWriteOnce
 postgresImage: postgres:9.6.5
 # If you disable postgresDedicatedStorage, you should consider bumping up gitlabRailsStorageSize
 postgresDedicatedStorage: true
 postgresAccessMode: ReadWriteOnce
-postgresStorageSize: 5Gi
+#postgresStorageSize: 30Gi
 gitlabDataAccessMode: ReadWriteOnce
-gitlabDataStorageSize: 5Gi
+#gitlabDataStorageSize: 30Gi
 gitlabRegistryAccessMode: ReadWriteOnce
 gitlabRegistryStorageSize: 10Gi
 gitlabConfigAccessMode: ReadWriteOnce
-gitlabConfigStorageSize: 1Gi
+#gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v10.1.0
 # Valid values for provider are `gke` for Google Container Engine. Leaving it blank (or any othervalue) will disable fast disk options.
 provider: gke
@@ -63,22 +63,22 @@ gitlab-runner:
   checkInterval: 1
   # runnerRegistrationToken must equal initialSharedRunnersRegistrationToken
   runnerRegistrationToken: "tQtCbx5UZy_ByS7FyzUH"
-  resources:
-    limits:
-      memory: 500Mi
-      cpu: 600m
-    requests:
-      memory: 500Mi
-      cpu: 600m
+  # resources:
+  #   limits:
+  #     memory: 500Mi
+  #     cpu: 600m
+  #   requests:
+  #     memory: 500Mi
+  #     cpu: 600m
   runners:
     privileged: true
     ## Build Container specific configuration
     ##
-    builds:
-      cpuLimit: 200m
-      memoryLimit: 256Mi
-      cpuRequests: 100m
-      memoryRequests: 128Mi
+    # builds:
+    #   cpuLimit: 200m
+    #   memoryLimit: 256Mi
+    #   cpuRequests: 100m
+    #   memoryRequests: 128Mi
 
     ## Service Container specific configuration
     ##
