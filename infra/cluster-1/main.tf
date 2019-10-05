@@ -34,7 +34,7 @@ resource "google_container_cluster" "k8s" {
   }
 
   node_config {
-    machine_type = "n1-standard-2"
+    machine_type = "n1-standard-1"
     disk_size_gb = 50
 
     oauth_scopes = [
@@ -57,7 +57,7 @@ resource "google_container_node_pool" "service-pool" {
   name               = "mon-pool"
   location           = "${var.zone}"
   cluster            = "${google_container_cluster.k8s.name}"
-  initial_node_count = 2
+  initial_node_count = 1
 }
 
 # module "dns" {
