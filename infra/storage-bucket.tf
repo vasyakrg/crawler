@@ -1,14 +1,15 @@
 provider "google" {
-  version = "2.0.0"
+  version = "2.11.0"
   project = "${var.project}"
   region  = "${var.region}"
 }
 
 module "storage-bucket" {
-  source  = "SweetOps/storage-bucket/google"
-  version = "0.1.1"
+  source    = "git::https://github.com/SweetOps/terraform-google-storage-bucket.git?ref=master"
+  namespace = "otus-crawler"
+  location  = "${var.region}"
 
-  name = ["otus-crawler"]
+  force_destroy = "true"
 }
 
 output storage-bucket_url {
