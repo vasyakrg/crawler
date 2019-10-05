@@ -1,10 +1,7 @@
 terraform {
-  # Версия terraform
-  required_version = ">=0.11.11"
 }
 
 provider "google" {
-  # Версия провайдера
   version = "2.11.0"
 
   credentials = "${file("~/.config/gcloud/vasya-k8s-1139ce55674f.json")}"
@@ -59,12 +56,3 @@ resource "google_container_node_pool" "service-pool" {
   cluster            = "${google_container_cluster.k8s.name}"
   initial_node_count = 1
 }
-
-# module "dns" {
-#   source        = "../modules/dns"
-#   dns_zone_id   = "tfm"
-#   dns_zone_name = "tfm.zone"
-#   record_name   = "cluster-1.k8s"
-#   record_ip     = "${google_container_cluster}"
-# }
-
