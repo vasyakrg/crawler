@@ -11,4 +11,3 @@ variables.tf
 .env
 credentials.yml
 .docker-creds
-bot/

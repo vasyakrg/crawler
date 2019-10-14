@@ -7,6 +7,9 @@
 ## Описание инфраструктуры
 - основная платформа k8s в GCP - более подробно [тут](infra/README.md)
 
+## Описание приложения
+- Поисковый бот состоит из двух миккросервисов - более подробно [тут](src/README.md)
+
 ## Authors
   * **Vassiliy Yegorov** - [vasyakrg](https://github.com/vasyakrg)
   * **Anton Nechaev** - [flamerior](https://github.com/flamerior)

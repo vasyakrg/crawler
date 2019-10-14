@@ -1,0 +1,17 @@
+image: vasyakrg/docker:latest
+
+stages:
+ # - build
+ - deploy
+
+# build:
+ # stage: build
+ # script:
+   # - docker-compose build
+
+deploy-containers:
+ stage: deploy
+ # when: manual
+ script:
+   - docker-compose down
+   - docker-compose up -d

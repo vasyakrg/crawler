@@ -272,13 +272,12 @@ def publish_url(url):
 if __name__ == "__main__":
 
     channel = connect_to_mq()
-    channel.queue_declare(queue=mqqueue)
+    channel.queue_declare(mqqueue)
     parser = ArgumentParser(description='Simple web crawler')
     parser.add_argument('url', help='URL to start')
     args = parser.parse_args()
     prometheus_client.start_http_server(8000)
 
     publish_url(args.url)
-    channel.basic_consume(callback,
-                      queue=mqqueue)
+    channel.basic_consume(mqqueue, callback, auto_ack=True)
     channel.start_consuming()

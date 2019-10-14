@@ -1,0 +1,56 @@
+version: '3.3'
+services:
+  mongodb:
+    image: mongo:3.2
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - back_net
+
+  rabbitmq:
+    image: rabbitmq:3
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_LOGS=/var/log/rabbitmq/rabbit.log
+    volumes:
+      - rabbitdata:/var/lib/rabbitmq
+      - rabbitlog:/var/log/rabbitmq
+    networks:
+      - back_net
+
+  ui:
+    image: ${USER_NAME}/bot-ui
+    ports:
+      - 8000:8000/tcp
+    networks:
+      - back_net
+    environment:
+      - MONGO=mongodb
+      - MONGO_PORT=27017
+    depends_on:
+      - mongodb
+
+  app:
+    image: ${USER_NAME}/bot-app
+    environment:
+      - MONGO=mongodb
+      - MONGO_PORT=27017
+      - RMQ_HOST=rabbitmq
+      - RMQ_QUEUE=urls
+      - RMQ_USERNAME=guest
+      - RMQ_PASSWORD=guest
+      - CHECK_INTERVAL=5
+      - EXCLUDE_URLS=".*github.com"
+    depends_on:
+      - mongodb
+    networks:
+      - back_net
+
+volumes:
+  mongodb:
+  rabbitdata:
+  rabbitlog:
+
+networks:
+  back_net:
