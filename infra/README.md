@@ -9,7 +9,7 @@
 ## Для запуска нужно:
 - иметь учетную записи (и положительный баланс) на [GCP](https://console.cloud.google.com)
 - иметь установленный софт по списку:
-  - [terraform](https://www.terraform.io/downloads.html) (версия 11.14)
+  - [terraform](https://www.terraform.io/downloads.html) (версия 12.8)
 
 ## Authors
   * **Vassiliy Yegorov** - [vasyakrg](https://github.com/vasyakrg)
