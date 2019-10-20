@@ -1,0 +1,23 @@
+app:
+  image:
+    repository: vasyakrg/crawler-app
+    tag: latest
+  mongoHost: crawler-mongodb
+  mongoPort: 27017
+  rmqHost: crawler-rabbitmq
+  rmqQueue: urls
+  rmqUsername: user
+  rmqPasswordKey: 
+    name: rmq-user-secret
+    key: rmqu-password
+  checkInterval: 5
+  excludeUrl: ".*github.com"
+
+ui:
+  image:
+    repository: vasyakrg/crawler-ui
+    tag: latest
+  service:
+    externalPort: 8000
+  mongoHost: crawler-mongodb
+  mongoPort: 27017

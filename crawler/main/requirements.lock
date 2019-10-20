@@ -1,0 +1,15 @@
+dependencies:
+- name: ui
+  repository: file://../ui
+  version: 1.0.0
+- name: app
+  repository: file://../app
+  version: 1.0.0
+- name: mongodb
+  repository: file://../mongodb
+  version: 7.4.2
+- name: rabbitmq
+  repository: file://../rabbitmq
+  version: 6.8.5
+digest: sha256:2eaa81ae3e4201766bbbafaadf4db9d44cdc7d37dd1f1cf02d07d668f7397c06
+generated: "2019-10-20T22:23:34.052817+07:00"
