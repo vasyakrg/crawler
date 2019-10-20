@@ -1,0 +1,50 @@
+# RabbitMQ
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+  name: {{ template "rmq.fullname" . }}
+  labels:
+    app: crawler
+    component: mrq
+    release: {{ .Release.Name }}
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crawler
+      component: rmq
+      release: {{ .Release.Name }} 
+  template: 
+    metadata: 
+      labels:
+        app: crawler
+        component: rmq
+        release: {{ .Release.Name }}
+    spec: 
+      containers: 
+        - name: rmq
+          image: rabbitmq:management
+          imagePullPolicy: IfNotPresent
+          env: 
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: rmq-user-secret
+                  key: rmqu-password
+            - name: RABBITMQ_DEFAULT_VHOST
+              value: /
+            - name: RABBITMQ_DEFAULT_USER
+              value: {{ .Values.rabbitmq.username }}
+          ports: 
+            - name: rmq
+              containerPort: 5672
+              protocol: TCP
+            - name: rmq-mgr-http
+              containerPort: 15672
+              protocol: TCP
+
+          resources:
+            requests:
+              memory: "200Mi"
+            limits:
+              memory: "500Mi"

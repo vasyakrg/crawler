@@ -1,0 +1,17 @@
+---
+dependencies:
+  - name: ui
+    version: "1.0.0"
+    repository: "file://../ui"
+
+  - name: app
+    version: "1.0.0"
+    repository: "file://../app"
+
+  - name: mongodb
+    version: 7.4.2
+    repository: "file://../mongodb"
+
+  - name: rabbitmq
+    version: 6.8.5
+    repository: "file://../rabbitmq"

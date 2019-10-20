@@ -1,0 +1,14 @@
+image:
+  repository: vasyakrg/crawler-app
+  tag: latest
+
+mongoHost:
+mongoPort:
+rmqHost:
+rmqQueue:
+rmqUsername:
+rmqPasswordKey:
+  name: 
+  key:
+checkInterval:
+excludeUrl:

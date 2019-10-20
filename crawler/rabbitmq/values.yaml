@@ -1,0 +1,26 @@
+rabbitmq:
+  ## RabbitMQ application username
+  ## ref: https://github.com/bitnami/bitnami-docker-rabbitmq#environment-variables
+  ##
+  username: user
+
+  ## RabbitMQ application password
+  ## ref: https://github.com/bitnami/bitnami-docker-rabbitmq#environment-variables
+  ##
+  # password:
+  # existingPasswordSecret: name-of-existing-secret
+
+  ## Erlang cookie to determine whether different nodes are allowed to communicate with each other
+  ## ref: https://github.com/bitnami/bitnami-docker-rabbitmq#environment-variables
+  ##
+  # erlangCookie:
+  # existingErlangSecret: name-of-existing-secret
+
+  ## Node name to cluster with. e.g.: `clusternode@hostname`
+  ## ref: https://github.com/bitnami/bitnami-docker-rabbitmq#environment-variables
+  ##
+  # rabbitmqClusterNodeName:
+
+  ## Value for the RABBITMQ_LOGS environment variable
+  ## ref: https://www.rabbitmq.com/logging.html#log-file-location
+  ##

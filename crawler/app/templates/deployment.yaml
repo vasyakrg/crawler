@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "app.fullname" . }}
+  labels:
+    app: crawler
+    component: app
+    release: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crawler
+      component: app
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      name: app
+      labels:
+        app: crawler
+        component: app
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          name: app
+          env:
+            - name: MONGO
+              value:  {{ .Values.mongoHost | default "mongodb" }}
+            - name: MONGO_PORT
+              value:  {{  .Values.mongoPort | default "27017" | quote }}
+            - name: RMQ_HOST
+              value:  {{ .Values.rmqHost | default "rabbitmq" }}
+            - name: RMQ_QUEUE
+              value:  {{  .Values.rmqQueue | default "urls" }}
+            - name: RMQ_USERNAME
+              value:  {{  .Values.rmqUsername | default "user" }}
+            - name: RMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.rmqPasswordKey.name }}
+                  key: {{ .Values.rmqPasswordKey.key | default "rabbitmq-password" }}
+            - name: CHECK_INTERVAL
+              value:  {{  .Values.checkInterval | default "5" | quote }}
+            # - name: EXCLUDE_URLS
+              # value:  {{  .Values.excludeUrl | default ".*github.com" | quote }}
