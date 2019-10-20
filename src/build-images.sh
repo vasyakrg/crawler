@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t vasyakrg/bot-app ./app
-docker build -t vasyakrg/bot-ui ./ui
+docker build -t vasyakrg/crawler-app ./app
+docker build -t vasyakrg/crawler-ui ./ui
