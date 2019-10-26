@@ -10,6 +10,10 @@
 ## Описание приложения
 - Поисковый бот состоит из двух миккросервисов - более подробно [тут](src/README.md)
 
+## Доступы
+- основное приложение размещено в - http://crawler.tfm.zone
+- rabbitMQ - http://34.76.203.176:32345/#/ (login - user, пароль берется из секретов rmq-user-secret/rmqu-password)
+
 ## Authors
   * **Vassiliy Yegorov** - [vasyakrg](https://github.com/vasyakrg)
   * **Anton Nechaev** - [flamerior](https://github.com/flamerior)
