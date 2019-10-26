@@ -37,11 +37,12 @@ spec:
             - name: RMQ_USERNAME
               value:  {{  .Values.rmqUsername | default "user" }}
             - name: RMQ_PASSWORD
+              # value: Hp9L64zYus2UDmDpcSC4ArORUuFarT7eM0cmv7gpv9
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.rmqPasswordKey.name }}
-                  key: {{ .Values.rmqPasswordKey.key | default "rabbitmq-password" }}
+                  key: {{ .Values.rmqPasswordKey.key | quote }}
             - name: CHECK_INTERVAL
               value:  {{  .Values.checkInterval | default "5" | quote }}
-            # - name: EXCLUDE_URLS
-              # value:  {{  .Values.excludeUrl | default ".*github.com" | quote }}
+            - name: EXCLUDE_URLS
+              value:  {{  .Values.excludeUrl | default ".*github.com" | quote }}

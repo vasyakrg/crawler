@@ -27,6 +27,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env: 
             - name: RABBITMQ_DEFAULT_PASS
+              # value: Hp9L64zYus2UDmDpcSC4ArORUuFarT7eM0cmv7gpv9
               valueFrom:
                 secretKeyRef:
                   name: rmq-user-secret
