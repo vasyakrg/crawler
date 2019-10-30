@@ -13,6 +13,10 @@ provider "google" {
   zone    = "${var.zone}"
 }
 
+provider "kubernetes" {
+
+}
+
 data "kubernetes_service" "nginx" {
   metadata {
     name      = "nginx"
@@ -25,6 +29,14 @@ module "dns" {
   dns_zone_id   = "tfm"
   dns_zone_name = "tfm.zone"
   record_name   = "gitlab"
+  record_ip     = "${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"
+}
+
+module "dns-crawler" {
+  source        = "./modules/dns"
+  dns_zone_id   = "tfm"
+  dns_zone_name = "tfm.zone"
+  record_name   = "crawler"
   record_ip     = "${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"
 }
 
