@@ -1,0 +1,9 @@
+dependencies:
+- name: grafana
+  repository: file://../grafana
+  version: 3.9.1
+- name: prometheus
+  repository: file://../prometheus
+  version: 9.1.2
+digest: sha256:783af89c2ab44cbd29d3a88eb2e4b9af8c41d605607205de5df366c6fa38810a
+generated: 2019-10-30T18:37:09.583346917+07:00
