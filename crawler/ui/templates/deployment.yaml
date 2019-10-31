@@ -19,6 +19,9 @@ spec:
   template:
     metadata:
       name: ui
+      annotations:
+        prometheus.io/port: "8000"
+        prometheus.io/scrape: "true"
       labels:
         app: crawler
         component: ui

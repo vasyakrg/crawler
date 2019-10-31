@@ -1,0 +1,7 @@
+---
+name: monitoring
+version: 0.1.0
+description: Crawler monitoring
+maintainers:
+  - name: Anton Nechaev
+    email: flamerior@gmail.com
