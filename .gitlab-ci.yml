@@ -36,13 +36,8 @@ Build:
     - track="${1-stable}"
     - name="$CI_ENVIRONMENT_SLUG"
     - helm dep update crawler/main
-    - >
-      helm upgrade --install \
-        --wait \
-        --namespace="$KUBE_NAMESPACE" \
-        --version="$CI_PIPELINE_ID-$CI_JOB_ID" \
-        "$name" \
-        crawler/main
+    - cd crawler/main
+    - helm upgrade --install --wait --namespace="$KUBE_NAMESPACE" --version="$CI_PIPELINE_ID-$CI_JOB_ID" "$name" .
 
 test:
   stage: test
