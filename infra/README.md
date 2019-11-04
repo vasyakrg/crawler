@@ -42,14 +42,20 @@
 - проверяем, что под с helm поднят - `kubectl get pods --all-namespaces` -  в списке будет поднят `tiller-deploy-xxxxxx`
 - проверяем - `helm list` - должно показать `ничего` и без ошибок
 
+# Создаем load-balancer
+- `cd infra/loadbalancer`
+- `./nginx-init.sh` 
+
+# Создаем ДНС-записи
+- подразумевается, что у вас уже есть подключенное в [gpe](https://console.cloud.google.com/net-services/dns/zones) доменное имя
+- идем `cd dns-init/`
+- заполняем `variables.tf.examples` и переименовываем `variables.tf`
+- запускаем `terraform init && terraform apply`
+
 # Установить Gitlab
 - В корневой папке проекта
 - `helm upgrade --install gitlab cicd/gitlab` - готовится 3-5 минут
 
-# Создаем ДНС-записи
-- идем `cd dns-init/`
-- заполняем `variables.tf.examples` и переименовываем `variables.tf`
-- запускаем `terraform init && terraform apply`
 
 ## Authors
   * **Vassiliy Yegorov** - [vasyakrg](https://github.com/vasyakrg)
