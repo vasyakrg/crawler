@@ -31,7 +31,7 @@ resource "google_container_cluster" "k8s" {
   }
 
   node_config {
-    machine_type = "n1-standard-1"
+    machine_type = "n1-standard-2"
     disk_size_gb = 50
 
     oauth_scopes = [
