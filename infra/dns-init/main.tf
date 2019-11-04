@@ -17,12 +17,6 @@ provider "kubernetes" {
 
 }
 
-data "kubernetes_service" "nginx" {
-  metadata {
-    name      = "nginx"
-    namespace = "nginx-ingress"
-  }
-}
 
 module "dns" {
   source        = "./modules/dns"
@@ -32,3 +26,9 @@ module "dns" {
   record_ip     = "${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"
 }
 
+data "kubernetes_service" "nginx" {
+  metadata {
+    name      = "nginx"
+    namespace = "nginx-ingress"
+  }
+}
