@@ -17,7 +17,7 @@ Build:
   # only:
   #   refs:
   #     - master
-    kubernetes: active
+    # kubernetes: active
   before_script:
     - apk add -U openssl curl tar gzip bash ca-certificates git
     - wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
