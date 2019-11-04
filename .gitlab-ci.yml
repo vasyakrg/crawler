@@ -35,6 +35,7 @@ Build:
     - echo $KUBE_NAMESPACE
     - track="${1-stable}"
     - name="$CI_ENVIRONMENT_SLUG"
+    - echo $name
     - helm dep update crawler/main
     - cd crawler/main
     - helm upgrade --install --wait --namespace="$KUBE_NAMESPACE" --version="$CI_PIPELINE_ID-$CI_JOB_ID" $name .
