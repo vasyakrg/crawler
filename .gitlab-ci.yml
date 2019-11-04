@@ -27,6 +27,7 @@ Build:
     - curl https://get.helm.sh/helm-v2.16.0-rc.2-linux-amd64.tar.gz | tar zx
     - mv linux-amd64/helm /usr/bin/
     - helm version
+    - helm init --client-only
     - curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
     - chmod +x /usr/bin/kubectl
     - kubectl version --client
