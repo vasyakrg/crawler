@@ -2,12 +2,14 @@ app:
   image:
     repository: vasyakrg/crawler-app
     tag: latest
-  mongoHost: crawler-mongodb
+  mongoHost: testc-mongodb.test
+#  mongoHost: crawler-mongodb
   mongoPort: 27017
-  rmqHost: crawler-rabbitmq
+  rmqHost: testc-rabbitmq.test
+#  rmqHost: crawler-rabbitmq
   rmqQueue: urls
   rmqUsername: user
-  rmqPasswordKey: 
+  rmqPasswordKey:
     name: rmq-user-secret
     key: rmqu-password
   checkInterval: 5
