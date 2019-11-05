@@ -6,8 +6,6 @@ provider "google" {
   # Версия провайдера
   version = "2.11.0"
 
-  credentials = "${file("~/.config/gcloud/vasya-k8s-1139ce55674f.json")}"
-
   project = "${var.project}"
   region  = "${var.region}"
   zone    = "${var.zone}"
@@ -24,7 +22,7 @@ data "kubernetes_service" "nginx" {
   }
 }
 
-module "dns" {
+module "dns-gitlab" {
   source        = "./modules/dns"
   dns_zone_id   = "tfm"
   dns_zone_name = "tfm.zone"
@@ -40,10 +38,27 @@ module "dns-crawler" {
   record_ip     = "${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"
 }
 
+
+module "dns-grafana" {
+  source        = "./modules/dns"
+  dns_zone_id   = "tfm"
+  dns_zone_name = "tfm.zone"
+  record_name   = "grafana"
+  record_ip     = "${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"
+}
+
 module "dns-prometet" {
   source        = "./modules/dns"
   dns_zone_id   = "tfm"
   dns_zone_name = "tfm.zone"
   record_name   = "prometheus"
+  record_ip     = "${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"
+}
+
+module "dns-kibana" {
+  source        = "./modules/dns"
+  dns_zone_id   = "tfm"
+  dns_zone_name = "tfm.zone"
+  record_name   = "kibana"
   record_ip     = "${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"
 }

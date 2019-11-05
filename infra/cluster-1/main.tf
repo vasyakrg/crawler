@@ -4,7 +4,7 @@ terraform {
 provider "google" {
   version = "2.11.0"
 
-  credentials = "${file("~/.config/gcloud/vasya-k8s-1139ce55674f.json")}"
+  # credentials = "${file("~/.config/gcloud/vasya-k8s-1139ce55674f.json")}"
 
   project = "${var.project}"
   region  = "${var.region}"
@@ -31,7 +31,7 @@ resource "google_container_cluster" "k8s" {
   }
 
   node_config {
-    machine_type = "n1-standard-1"
+    machine_type = "n1-standard-2"
     disk_size_gb = 50
 
     oauth_scopes = [
@@ -54,5 +54,5 @@ resource "google_container_node_pool" "service-pool" {
   name               = "mon-pool"
   location           = "${var.zone}"
   cluster            = "${google_container_cluster.k8s.name}"
-  initial_node_count = 1
+  initial_node_count = 2
 }

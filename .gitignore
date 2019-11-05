@@ -6,6 +6,7 @@ rp.md
 *.tfstate.backup
 *.tfvars
 variables.tf
+!infra/dns-init/modules/dns/variables.tf
 .terraform/
 .idea
 .env
