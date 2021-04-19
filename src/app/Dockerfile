@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.10.0a6-slim
 ADD . /
 
 ENV EXCLUDE_URLS=".*github.com"
